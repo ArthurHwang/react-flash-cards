@@ -4,12 +4,39 @@ import Form from './Form/Form.js'
 export default class FlashCards extends Component {
   constructor(props) {
     super(props)
-    this.state = ({data: []})
+    this.state = ({
+      data: [],
+      question: '',
+      answer: ''
+    })
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    const newData = [...this.state.data]
+    const formObject = {
+      question: this.state.question,
+      answer: this.state.answer
+    }
+    newData.push(formObject)
+    this.setState({
+      data: newData,
+      question: '',
+      answer: ''
+    })
+    event.target.reset()
   }
 
   render() {
     return(
-      <Form />
+      <Form value={this.state} change={this.handleChange} submit={this.handleSubmit}/>
     )
   }
 }
