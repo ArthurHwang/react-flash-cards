@@ -1,18 +1,31 @@
+body {
+  font-size: 1rem;
+  font-family: 'Cabin', sans-serif;
+}
+
 .container {
-  margin-top: 20%;
-  border: 1px solid black;
   width: 20px;
   height: 500px;
+  margin: auto;
+  margin-top: 20%;
+}
+
+.card-container {
+  margin: auto;
+  height: 100%;
+  width: 60%
 }
 
 .user-form {
-  margin: auto;
-  margin-top: 100px;
+  margin: 40px auto;
   width: 50%;
-  height: 75%;
 }
 
 .title {
+  position: relative;
+  background-color: white;
+  top: -80px;
+  font-size: 2rem;
   text-align: center;
 }
 
