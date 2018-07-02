@@ -18,7 +18,6 @@ const Form = (props) => {
         </form>
       </div>
     </div>
-
   )
 }
 
