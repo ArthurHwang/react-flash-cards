@@ -1,0 +1,21 @@
+.container {
+  margin-top: 20%;
+  border: 1px solid black;
+  width: 20px;
+  height: 500px;
+}
+
+.user-form {
+  margin: auto;
+  margin-top: 100px;
+  width: 50%;
+  height: 75%;
+}
+
+.title {
+  text-align: center;
+}
+
+.save-btn {
+  width: 100%;
+}

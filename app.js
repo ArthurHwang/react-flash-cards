@@ -37,7 +37,9 @@ export default class FlashCards extends Component {
 
   render() {
     return(
-      <Form value={this.state} change={this.handleChange} submit={this.handleSubmit}/>
+      <div className="container">
+        <Form value={this.state} change={this.handleChange} submit={this.handleSubmit}/>
+      </div>
     )
   }
 }
