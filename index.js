@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './app.js'
+import FlashCards from './app.js'
 
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<FlashCards />, document.getElementById('root'))

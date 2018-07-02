@@ -10,7 +10,7 @@ const Form = (props) => {
       </div>
       <div className="form-group">
         <label for="user-answer">Answer</label>
-        <input type="text" className="form-control" id="user-answer-input" placeholder="Enter Question"/>
+        <input type="text" className="form-control" id="user-answer-input" placeholder="Enter Answer"/>
       </div>
       <button type="submit" className="btn btn-primary" id="save-button">Save</button>
     </form>
