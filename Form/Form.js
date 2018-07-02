@@ -18,6 +18,10 @@ const Form = (props) => {
         </form>
       </div>
     </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 97cc184e2fc12d8303e4d111ec048d84f771dcf2
   )
 }
 
