@@ -16,6 +16,10 @@ export default class FlashCards extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount() {
+
+  }
+
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -45,7 +49,7 @@ export default class FlashCards extends Component {
 
     return(
       <div className="container">
-        <Nav />
+        <Nav click=""/>
         <Form value={this.state} change={this.handleChange} submit={this.handleSubmit}/>
         {this.state.isEmpty ? empty : form}
       </div>
