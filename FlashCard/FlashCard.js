@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const FlashCard = (props) => {
   const time = new Date()
   const insertTime = `Date created: ${time.getMonth()}/${time.getDay()}/${time.getFullYear()}`
@@ -10,8 +9,8 @@ const FlashCard = (props) => {
         {insertTime}
       </div>
       <div className="card-body">
-        <h5 className="card-title"></h5>
-        <p className="card-text"></p>
+        <h5 className="card-title">{props.question}</h5>
+        <p className="card-text">{props.answer}</p>
         <a className="edit-btn btn btn-primary">edit</a>
         <a className="delete-btn btn btn btn-primary">delete</a>
       </div>
