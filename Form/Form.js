@@ -22,7 +22,7 @@ const Form = (props) => {
   </div>
 
 
-  if (!props.value.isEmpty) {
+  if (!props.value.showEmpty) {
     toBeRendered = form
   }
 

@@ -11,7 +11,7 @@ export default class App extends Component {
       data: [],
       question: '',
       answer: '',
-      isEmpty: true,
+      showEmpty: true,
       view: 'new'
     })
     this.handleChange = this.handleChange.bind(this)
@@ -20,15 +20,21 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('hashchange', function(event) {
-      if (window.location.hash = "#cards") {
-        this.setState({view: cards})
+    window.addEventListener('hashchange', (event) => {
+      if (window.location.hash === "#cards") {
+        this.setState({view: "cards"})
+        console.log(this.state)
+      }
+      if (window.location.hash === "#new") {
+        this.setState({view: "new"})
+        console.log(this.state)
       }
     })
   }
 
   clickHandler(event) {
-    this.setState({isEmpty: false})
+    this.setState({showEmpty: false})
+    console.log(this.state)
   }
 
   handleChange(event) {
@@ -55,13 +61,26 @@ export default class App extends Component {
   }
 
   render() {
+    const cardView = <FlashCards data={this.state.data} />
+    const newView = <Form click={this.clickHandler} value={this.state} change={this.handleChange} submit={this.handleSubmit}/>
+    let viewRender = null
+
+    if (this.state.view === "cards") {
+      viewRender = cardView
+    }
+    if (this.state.view === "new") {
+      viewRender = newView
+    }
+
 
 
     return(
       <div className="container">
         <Nav click=""/>
-        <Form click={this.clickHandler} value={this.state} change={this.handleChange} submit={this.handleSubmit}/>
-        <FlashCards data={this.state.data} />
+        {/* <Form click={this.clickHandler} value={this.state} change={this.handleChange} submit={this.handleSubmit}/>
+        <FlashCards data={this.state.data} /> */}
+        {/* {this.state.view} */}
+        {viewRender}
       </div>
     )
   }
