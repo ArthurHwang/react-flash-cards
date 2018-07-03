@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Form from './Form/Form'
 import Nav from './Nav/Nav'
+import Empty from './Form/Empty'
 
 export default class FlashCards extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ export default class FlashCards extends Component {
     this.state = ({
       data: [],
       question: '',
-      answer: ''
+      answer: '',
+      isEmpty: true
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -31,16 +33,21 @@ export default class FlashCards extends Component {
     this.setState({
       data: newData,
       question: '',
-      answer: ''
+      answer: '',
+      isEmpty: false
     })
     event.target.reset()
   }
 
   render() {
+    const form = <Form value={this.state} change={this.handleChange} submit={this.handleSubmit}/>
+    const empty = <Empty />
+
     return(
       <div className="container">
         <Nav />
         <Form value={this.state} change={this.handleChange} submit={this.handleSubmit}/>
+        {this.state.isEmpty ? empty : form}
       </div>
     )
   }

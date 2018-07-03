@@ -6,10 +6,10 @@ const Nav = (props) => {
       {/* <a className="navbar-brand" href="#"></a> */}
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav">
-          <li className="nav-item"><a className="nav-link" href="#cards">Cards<i class="fas fa-sticky-note"></i>
+          <li className="nav-item"><a className="nav-link" href="#cards">Cards<i className="fas fa-sticky-note"></i>
 
 </a></li>
-          <li className="nav-item"><a className="nav-link" href="#new">New<i class="fas fa-plus-circle"></i>
+          <li className="nav-item"><a className="nav-link" href="#new">New<i className="fas fa-plus-circle"></i>
 
 </a></li>
         </ul>
