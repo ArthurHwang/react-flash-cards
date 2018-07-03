@@ -14,6 +14,7 @@ const Nav = (props) => {
 </a></li>
         </ul>
       </div>
+      
     </nav>
   )
 }
