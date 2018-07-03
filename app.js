@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Form from './Form/Form'
 import Nav from './Nav/Nav'
 import Empty from './Form/Empty'
+import FlashCard from './FlashCard/FlashCard'
 
 export default class FlashCards extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ export default class FlashCards extends Component {
 
   componentDidMount() {
     window.addEventListener('hashchange', () => {
-      
+
     })
   }
 
@@ -54,6 +55,7 @@ export default class FlashCards extends Component {
         <Nav click=""/>
         <Form value={this.state} change={this.handleChange} submit={this.handleSubmit}/>
         {this.state.isEmpty ? empty : form}
+      <FlashCard />
       </div>
     )
   }
