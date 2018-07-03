@@ -2,10 +2,11 @@ import React from 'react'
 
 const Form = (props) => {
   return (
-    <div class="card-container card" >
-      <div class="card-body">
+    <div className="card-container card" >
+      <div className="card-body">
         <form className="user-form" onSubmit={props.submit}>
-          <h1 className="title">Create a Flash Card</h1>
+          <h1 className="title">Create a Flash Card<i class="far fa-sticky-note"></i></h1>
+
           <div className="form-group">
             <label>Question</label>
             <input type="text" value={props.value.question} onChange={props.change} name="question" className="form-control" id="user-question-input" placeholder="Enter Question"/>

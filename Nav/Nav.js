@@ -2,11 +2,16 @@ import React from 'react'
 
 const Nav = (props) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="collapse navbar-collapse" id="navbarNav">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light" id="nav-container">
+      {/* <a className="navbar-brand" href="#"></a> */}
+      <div className="collapse navbar-collapse">
         <ul className="navbar-nav">
-          <li className="nav-item"><a className="nav-link" href="#cards">Cards</a></li>
-          <li className="nav-item"><a className="nav-link" href="#new">New</a></li>
+          <li className="nav-item"><a className="nav-link" href="#cards">Cards<i class="fas fa-sticky-note"></i>
+
+</a></li>
+          <li className="nav-item"><a className="nav-link" href="#new">New<i class="fas fa-plus-circle"></i>
+
+</a></li>
         </ul>
       </div>
     </nav>
