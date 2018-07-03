@@ -6,6 +6,15 @@ html  {
   text-align: center;
 }
 
+#title {
+  position: absolute;;
+  top: 1%;
+  left: 39%;
+  text-align: center;
+  color: #03A9F4;
+  font-size: 2rem;
+}
+
 #new-button {
   color: #E64A19;
 }

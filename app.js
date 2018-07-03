@@ -58,6 +58,7 @@ export default class App extends Component {
     return(
       <div className="container">
         <Nav />
+        <h1 id="title">React Flash Cards <i class="fab fa-react"></i></h1>
         <View data={this}/>
       </div>
     )
