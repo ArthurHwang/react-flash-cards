@@ -4,7 +4,7 @@ const FlashCard = (props) => {
   const time = new Date()
   const insertTime = `Date created: ${time.getMonth()}/${time.getDay()}/${time.getFullYear()}`
   return (
-    <div className="card">
+    <div className="flashcard card">
       <div className="card-header">
         {insertTime}
       </div>

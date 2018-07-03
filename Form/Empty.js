@@ -1,11 +1,10 @@
 import React from 'react'
 
 const Empty = (props) => {
-
   return (
-    <div>
+    <div className="empty">
       <h1>You have no flash cards</h1>
-      <button onClick={props.click}>Make one</button>
+      <button href="#new" id="make-one-button" onClick={props.click}>Make one</button>
     </div>
   )
 }

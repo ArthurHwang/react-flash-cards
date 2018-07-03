@@ -3,6 +3,32 @@ html  {
   width: 100%;
   font-size: 1rem;
   font-family: 'Cabin', sans-serif;
+  text-align: center;
+}
+
+#new-button {
+  color: #E64A19;
+}
+
+#make-one-button {
+  border-radius: 10px;
+  color: white;
+  background-color: #43A047;
+  height: 40px;
+}
+
+#cards-button {
+  color: #43A047;
+}
+
+#save-button {
+  background-color: #43A047;
+  color: white;
+  width: 100%;
+}
+
+.empty {
+  text-align: center;
 }
 
 .container {
@@ -15,24 +41,20 @@ html  {
 .card-container {
   margin: auto;
   height: 100%;
-  width: 60%
+  width: 60%;
 }
 
 .user-form {
-  margin: 40px auto;
+  margin: -20px auto 0 auto;
   width: 50%;
 }
 
 .title {
   position: relative;
   background-color: white;
-  top: -80px;
+  top: -20px;
   font-size: 2rem;
   text-align: center;
-}
-
-.save-btn {
-  width: 100%;
 }
 
 #nav-container {
@@ -41,4 +63,9 @@ html  {
   top:0;
   left: 0;
   background-color: none;
+}
+
+.flashcard {
+  width: 50%;
+  float: left;
 }
