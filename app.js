@@ -17,7 +17,9 @@ export default class FlashCards extends Component {
   }
 
   componentDidMount() {
-
+    window.addEventListener('hashchange', () => {
+      
+    })
   }
 
   handleChange(event) {
