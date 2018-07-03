@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import Form from './Form/Form.js'
+import Form from './Form/Form'
+import Nav from './Nav/Nav'
 
 export default class FlashCards extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ export default class FlashCards extends Component {
   render() {
     return(
       <div className="container">
+        <Nav />
         <Form value={this.state} change={this.handleChange} submit={this.handleSubmit}/>
       </div>
     )
