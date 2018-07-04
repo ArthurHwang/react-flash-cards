@@ -3,10 +3,18 @@ html  {
   width: 100%;
   font-size: 1rem;
   font-family: 'Cabin', sans-serif;
-  text-align: center;
 }
 
-#title {
+#make-one-button {
+
+  /* border-radius: 10px; */
+  /* color: white; */
+  /* background-color: #43A047; */
+  /* height: 40px; */
+}
+
+
+/* #title {
   position: absolute;;
   top: 1%;
   left: 39%;
@@ -19,12 +27,6 @@ html  {
   color: #E64A19;
 }
 
-#make-one-button {
-  border-radius: 10px;
-  color: white;
-  background-color: #43A047;
-  height: 40px;
-}
 
 #cards-button {
   color: #43A047;
@@ -77,4 +79,4 @@ html  {
 .flashcard {
   width: 50%;
   float: left;
-}
+} */
