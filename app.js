@@ -24,6 +24,14 @@ export default class App extends Component {
     })
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.data.length !== this.state.data.length) {
+      const json = JSON.stringify(this.state.data)
+      // localStorage.setItem('flashcards", json)
+      localStorage.setItem('flashcards', json);
+    }
+  }
+
   clickHandler() {
     window.location.hash = "#new"
     this.setState({view: '#new'})
