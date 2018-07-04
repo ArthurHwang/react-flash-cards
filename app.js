@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Nav from './Nav/Nav'
-import View from './View/View'
+import Form from './Form/Form'
+import FlashCards from './FlashCard/FlashCards'
 
 export default class App extends Component {
   constructor(props) {
@@ -9,8 +10,7 @@ export default class App extends Component {
       data: [],
       question: '',
       answer: '',
-      showEmpty: true,
-      view: 'new'
+      view: '#cards'
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -19,26 +19,36 @@ export default class App extends Component {
 
   componentDidMount() {
     window.addEventListener('hashchange', (event) => {
-      if (window.location.hash === "#cards") {
-        this.setState({view: "cards"})
-      }
-      if (window.location.hash === "#new") {
-        this.setState({view: "new"})
-      }
+      const newHash = window.location.hash
+      this.setState({view: newHash})
     })
   }
 
-  clickHandler(event) {
-    this.setState({showEmpty: false})
+  clickHandler() {
+    window.location.hash = "#new"
+    this.setState({view: '#new'})
   }
 
-  handleChange(event) {
+  handleChange({target}) {
     this.setState({
-      [event.target.name]: event.target.value
+      [target.name]: target.value
     })
+  }
+
+  renderView() {
+    const {clickHandler, state, handleChange, handleSubmit} = this
+    const cardView = <FlashCards click={clickHandler} data={state.data}/>
+    const newView = <Form view={state.view} value={state.data} change={handleChange} submit={handleSubmit}/>
+    const viewRender = state.view === "#cards" ? cardView : newView
+    return viewRender
   }
 
   handleSubmit(event) {
+    const {target} = event
+    if (target.question.value === "" || target.answer.value === "") {
+      alert('Flash card values must not be empty!')
+      return
+    }
     event.preventDefault()
     const copiedState = [...this.state.data]
     const formObject = {
@@ -51,10 +61,8 @@ export default class App extends Component {
       question: '',
       answer: ''
     })
-    event.target.reset()
+    target.reset()
   }
-
-  
 
   render() {
     return(
@@ -62,10 +70,9 @@ export default class App extends Component {
         <div className="container">
           <Nav />
           <h1 className="title text-center">React Flash Cards <i className="text-primary fab fa-react"></i></h1>
-          <View data={this}/>
+          {this.renderView()}
         </div>
       </div>
-
     )
   }
 }
