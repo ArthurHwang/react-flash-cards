@@ -21,3 +21,20 @@ html, body  {
   display: flex;
   align-items: center;
 }
+
+.flashcard {
+  margin-bottom: 5px;
+}
+
+.edit {
+  position: absolute;
+  width: 75px;
+  border: none;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.edit:focus{
+    outline: none;
+}
