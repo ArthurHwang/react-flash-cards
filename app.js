@@ -18,6 +18,9 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    if (localStorage.length > 0) {
+      this.hydrateStateWithLocalStorage()
+    }
     window.addEventListener('hashchange', (event) => {
       const newHash = window.location.hash
       this.setState({view: newHash})
