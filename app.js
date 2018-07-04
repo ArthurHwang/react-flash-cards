@@ -54,6 +54,8 @@ export default class App extends Component {
     event.target.reset()
   }
 
+  
+
   render() {
     return(
       <div className="vertical-center">
