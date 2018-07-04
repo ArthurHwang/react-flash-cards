@@ -1,20 +1,23 @@
 import React from 'react'
+import Empty from './Empty'
 
-const Form = (props) => {
+const Form = ({view, click, value, change, submit}) => {
+  const counter = `Number of Flashcards: ${value.length}`
   return (
-    <div class="card-container card" >
-      <div class="card-body">
-        <form className="user-form" onSubmit={props.submit}>
-          <h1 className="title">Create a Flash Card</h1>
+    <div className="card-container card" >
+      <div className="new-card-form card-body">
+        <form className="user-form" onSubmit={submit}>
+          <h1>Create a Flash Card</h1>
           <div className="form-group">
             <label>Question</label>
-            <input type="text" value={props.value.question} onChange={props.change} name="question" className="form-control" id="user-question-input" placeholder="Enter Question"/>
+            <input type="text" value={value.question} onChange={change} name="question" className="form-control" placeholder="Enter Question"/>
           </div>
           <div className="form-group">
             <label>Answer</label>
-            <input type="text" value={props.value.answer} onChange={props.change} name="answer" className="form-control" id="user-answer-input" placeholder="Enter Answer"/>
+            <input type="text" value={value.answer} onChange={change} name="answer" className="form-control" placeholder="Enter Answer"/>
           </div>
-          <button type="submit" className="save-btn btn btn-primary">Save</button>
+          <button type="submit" className="btn btn-large btn-success">Save</button>
+          <p className="counter">{counter}</p>
         </form>
       </div>
     </div>
