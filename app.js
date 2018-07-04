@@ -18,10 +18,25 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    if (localStorage.length > 0) {
+      this.hydrateStateWithLocalStorage()
+    }
     window.addEventListener('hashchange', (event) => {
       const newHash = window.location.hash
       this.setState({view: newHash})
     })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.data.length !== this.state.data.length) {
+      const json = JSON.stringify(this.state.data)
+      localStorage.setItem('flashcards', json);
+    }
+  }
+
+  hydrateStateWithLocalStorage() {
+    const value = JSON.parse(localStorage.getItem('flashcards'));
+    this.setState({data: value})
   }
 
   clickHandler() {
