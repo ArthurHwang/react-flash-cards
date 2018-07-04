@@ -56,11 +56,14 @@ export default class App extends Component {
 
   render() {
     return(
-      <div className="container">
-        <Nav />
-        <h1 className="text-center" id="title">React Flash Cards <i class="fab fa-react"></i></h1>
-        <View data={this}/>
+      <div className="vertical-center">
+        <div className="container">
+          <Nav />
+          <h1 className="text-center" id="title">React Flash Cards <i class="fab fa-react"></i></h1>
+          <View data={this}/>
+        </div>
       </div>
+
     )
   }
 }
