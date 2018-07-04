@@ -10,7 +10,7 @@ export default class App extends Component {
       data: [],
       question: '',
       answer: '',
-      view: '#cards'
+      view: window.location.hash
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)

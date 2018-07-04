@@ -9,6 +9,10 @@ const FlashCard = ({question, answer}) => {
         <h5 className="card-title">{question}</h5>
         <p className="card-text">{answer}</p>
       </div>
+      <button><i class="edit fas fa-edit"></i>Edit</button>
+
+
+
     </div>
   )
 }
