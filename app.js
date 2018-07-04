@@ -59,7 +59,7 @@ export default class App extends Component {
       <div className="vertical-center">
         <div className="container">
           <Nav />
-          <h1 className="text-center" id="title">React Flash Cards <i class="fab fa-react"></i></h1>
+          <h1 className="title text-center">React Flash Cards <i className="text-primary fab fa-react"></i></h1>
           <View data={this}/>
         </div>
       </div>
