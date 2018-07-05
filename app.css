@@ -27,6 +27,7 @@ html, body  {
 }
 
 .edit {
+  margin-bottom: 6px;
   position: absolute;
   width: 75px;
   border: none;
@@ -37,4 +38,20 @@ html, body  {
 
 .edit:focus{
     outline: none;
+}
+
+.btn-edit-save {
+  width: 100px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.btn-edit-cancel {
+  margin-top: 10px;
+  width: 100px;
+}
+
+.card-container {
+  margin: auto;
+  width: 75%;
 }

@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react'
 import Nav from './Nav/Nav'
 import Form from './Form/Form'
@@ -59,17 +60,18 @@ export default class App extends Component {
   handleEdit(event) {
     event.preventDefault()
     const {data} = this.state
-    const id = parseInt(event.target.closest('div').id)
+    const id = parseInt(event.target.parentNode.parentNode.getAttribute('data-id'))
     this.setState({
       isEditing: true,
        editId: id
      })
-    const found = data.filter((elem, index) => {
+    const found = data.find((elem, index) => {
       return index === id
     })
+    console.log(found)
     this.setState({
-      question: found[0].question,
-      answer: found[0].answer,
+      question: found.question,
+      answer: found.answer,
     })
   }
 
@@ -130,7 +132,12 @@ export default class App extends Component {
         <div className="vertical-center">
           <div className="container">
             <Nav />
-            <EditForm  submit={this.handleEditSubmit} change={this.handleChange} editQuestionValue={this.state.question} editAnswerValue={this.state.answer} click={this.handleEditCancel}  />
+            <EditForm
+              submit={this.handleEditSubmit}
+              change={this.handleChange}
+              editQuestionValue={this.state.question}
+              editAnswerValue={this.state.answer}
+              click={this.handleEditCancel}  />
           </div>
         </div>
       )
