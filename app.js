@@ -13,8 +13,7 @@ export default class App extends Component {
       question: '',
       answer: '',
       view: window.location.hash,
-      isEditing: false,
-      editId: null
+      editIndex: null
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -54,16 +53,15 @@ export default class App extends Component {
   }
 
   handleEditCancel() {
-    this.setState({isEditing: false})
+    this.setState({editIndex: null})
   }
 
   handleEdit(event) {
-    event.preventDefault()
     const {data} = this.state
     const id = parseInt(event.target.parentNode.parentNode.getAttribute('data-id'))
     this.setState({
       isEditing: true,
-       editId: id
+       editIndex: id
      })
     const found = data.find((elem, index) => {
       return index === id
@@ -78,9 +76,8 @@ export default class App extends Component {
   handleEditSubmit(event) {
     event.preventDefault()
     const {target} = event
-    const copiedState = [...this.state.data]
-    const findAndUpdate = copiedState.map((elem, index) => {
-      if (index === this.state.editId) {
+    const findAndUpdate = this.state.data.map((elem, index) => {
+      if (index === this.state.editIndex) {
       return elem = {
         question: this.state.question,
         answer: this.state.answer
@@ -91,7 +88,7 @@ export default class App extends Component {
     })
     this.setState({
       data: findAndUpdate,
-      isEditing: false
+      editIndex: null
     },() => {
       localStorage.setItem('flashcards', JSON.stringify(this.state.data))
     })
@@ -99,9 +96,17 @@ export default class App extends Component {
 
   renderView() {
     const {handleEdit, clickHandler, state, handleChange, handleSubmit} = this
-    const cardView = <FlashCards edit={handleEdit} click={clickHandler} data={state.data}/>
-    const newView = <Form view={state.view} value={state.data} change={handleChange} submit={handleSubmit}/>
-    const viewRender = state.view === "#cards" ? cardView : newView
+    const viewRender = state.view === "#cards" ?
+                          <FlashCards
+                            edit={handleEdit}
+                            click={clickHandler}
+                            data={state.data}/>
+                            :
+                          <Form
+                            view={state.view}
+                            value={state.data}
+                            change={handleChange}
+                            submit={handleSubmit}/>
     return viewRender
   }
 
@@ -127,7 +132,7 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.state.isEditing && this.state.view === "#cards") {
+    if (this.state.editIndex && this.state.view === "#cards") {
       return(
         <div className="vertical-center">
           <div className="container">
