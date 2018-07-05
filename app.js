@@ -84,7 +84,7 @@ export default class App extends Component {
     const copiedState = [...this.state.data]
     // const formObject = {
     //   question: this.state.question,
-    //   answer: this.state.answer
+    //   answer: this.state.answer;
     // }
 
     console.log(target)
