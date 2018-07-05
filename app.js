@@ -15,6 +15,7 @@ export default class App extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.clickHandler = this.clickHandler.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
   }
 
   componentDidMount() {
@@ -50,9 +51,17 @@ export default class App extends Component {
     })
   }
 
+  handleEdit(index, value, {target}) {
+    const id = parseInt(target.closest('div').id)
+    const {data} = this.state
+    const filter = data.filter((elem, index) => {
+      return index === id
+    })
+  }
+
   renderView() {
-    const {clickHandler, state, handleChange, handleSubmit} = this
-    const cardView = <FlashCards click={clickHandler} data={state.data}/>
+    const {handleEdit, clickHandler, state, handleChange, handleSubmit} = this
+    const cardView = <FlashCards edit={handleEdit} click={clickHandler} data={state.data}/>
     const newView = <Form view={state.view} value={state.data} change={handleChange} submit={handleSubmit}/>
     const viewRender = state.view === "#cards" ? cardView : newView
     return viewRender
