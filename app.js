@@ -18,6 +18,8 @@ export default class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.clickHandler = this.clickHandler.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
+    this.handleEditChange = this.handleEditChange.bind(this)
+    // this.handleEditSubmit = this.handleEditSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -53,16 +55,46 @@ export default class App extends Component {
     })
   }
 
-  handleEdit({target}) {
+  handleEdit(event) {
+    event.preventDefault()
     this.setState({isEditing: !this.state.isEditing})
-    const id = parseInt(target.closest('div').id)
+    const id = parseInt(event.target.closest('div').id)
     const {data} = this.state
     const filter = data.filter((elem, index) => {
       return index === id
     })
 
+    const found = this.state.data.filter((elem) => {
+      return filter[0] === elem
+    })
 
+    this.setState({question: found[0].question,
+                  answer: found[0].answer})
+  }
 
+  handleEditChange({target}) {
+    this.setState({
+      [target.name]: target.value
+    })
+  }
+
+  handleEditSubmit(event) {
+    event.preventDefault()
+    const {target} = event
+    const copiedState = [...this.state.data]
+    // const formObject = {
+    //   question: this.state.question,
+    //   answer: this.state.answer
+    // }
+
+    console.log(target)
+
+    copiedState.push(formObject)
+    this.setState({
+      data: copiedState,
+      question: '',
+      answer: ''
+    })
 
   }
 
@@ -101,7 +133,7 @@ export default class App extends Component {
         <div className="vertical-center">
           <div className="container">
             <Nav />
-            <EditForm view={this.state.view} value={this.state.data} change={this.handleChange} submit={this.handleSubmit}/>
+            <EditForm  change={this.handleEditChange} editQuestionValue={this.state.question} editAnswerValue={this.state.answer} click={this.handleEdit}  />
           </div>
         </div>
 
