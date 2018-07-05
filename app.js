@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Nav from './Nav/Nav'
 import Form from './Form/Form'
 import FlashCards from './FlashCard/FlashCards'
+import EditForm from './EditForm/EditForm'
 
 export default class App extends Component {
   constructor(props) {
@@ -53,15 +54,16 @@ export default class App extends Component {
   }
 
   handleEdit({target}) {
-
+    this.setState({isEditing: !this.state.isEditing})
     const id = parseInt(target.closest('div').id)
     const {data} = this.state
     const filter = data.filter((elem, index) => {
       return index === id
     })
-    console.log(filter)
-    console.log(target.ref)
-    console.log(this.ref)
+
+
+
+
   }
 
   renderView() {
@@ -94,6 +96,17 @@ export default class App extends Component {
   }
 
   render() {
+    if (this.state.isEditing) {
+      return(
+        <div className="vertical-center">
+          <div className="container">
+            <Nav />
+            <EditForm view={this.state.view} value={this.state.data} change={this.handleChange} submit={this.handleSubmit}/>
+          </div>
+        </div>
+
+      )
+    }
     return(
       <div className="vertical-center">
         <div className="container">
