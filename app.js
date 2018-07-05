@@ -55,7 +55,7 @@ export default class App extends Component {
     const id = parseInt(target.closest('div').id)
     const {data} = this.state
     const filter = data.filter((elem, index) => {
-      return index === id
+      return index === id;
     })
   }
 
