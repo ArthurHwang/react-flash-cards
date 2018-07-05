@@ -10,7 +10,8 @@ export default class App extends Component {
       data: [],
       question: '',
       answer: '',
-      view: window.location.hash
+      view: window.location.hash,
+      isEditing: false
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -51,12 +52,16 @@ export default class App extends Component {
     })
   }
 
-  handleEdit(index, value, {target}) {
+  handleEdit({target}) {
+
     const id = parseInt(target.closest('div').id)
     const {data} = this.state
     const filter = data.filter((elem, index) => {
-      return index === id;
+      return index === id
     })
+    console.log(filter)
+    console.log(target.ref)
+    console.log(this.ref)
   }
 
   renderView() {
