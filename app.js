@@ -60,13 +60,11 @@ export default class App extends Component {
     const {data} = this.state
     const id = parseInt(event.target.parentNode.parentNode.getAttribute('data-id'))
     this.setState({
-      isEditing: true,
        editIndex: id
      })
     const found = data.find((elem, index) => {
       return index === id
     })
-    console.log(found)
     this.setState({
       question: found.question,
       answer: found.answer,
@@ -132,7 +130,7 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.state.editIndex && this.state.view === "#cards") {
+    if (this.state.editIndex !== null && this.state.view === "#cards") {
       return(
         <div className="vertical-center">
           <div className="container">
