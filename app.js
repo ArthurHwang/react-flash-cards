@@ -12,14 +12,15 @@ export default class App extends Component {
       question: '',
       answer: '',
       view: window.location.hash,
-      isEditing: false
+      isEditing: false,
+      editId: undefined
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.clickHandler = this.clickHandler.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
-    this.handleEditChange = this.handleEditChange.bind(this)
-    // this.handleEditSubmit = this.handleEditSubmit.bind(this)
+    this.handleEditSubmit = this.handleEditSubmit.bind(this)
+    this.handleEditCancel = this.handleEditCancel.bind(this)
   }
 
   componentDidMount() {
@@ -55,11 +56,21 @@ export default class App extends Component {
     })
   }
 
+  handleEditCancel() {
+    this.setState({isEditing: false})
+  }
+
   handleEdit(event) {
     event.preventDefault()
-    this.setState({isEditing: !this.state.isEditing})
-    const id = parseInt(event.target.closest('div').id)
     const {data} = this.state
+    const id = parseInt(event.target.closest('div').id)
+
+    this.setState({
+      isEditing: true,
+       editId: id
+     })
+
+
     const filter = data.filter((elem, index) => {
       return index === id
     })
@@ -68,35 +79,40 @@ export default class App extends Component {
       return filter[0] === elem
     })
 
-    this.setState({question: found[0].question,
-                  answer: found[0].answer})
-  }
-
-  handleEditChange({target}) {
     this.setState({
-      [target.name]: target.value
+      question: found[0].question,
+      answer: found[0].answer,
     })
   }
+
+
 
   handleEditSubmit(event) {
     event.preventDefault()
     const {target} = event
     const copiedState = [...this.state.data]
-    // const formObject = {
-    //   question: this.state.question,
-    //   answer: this.state.answer;
-    // }
+    console.log(copiedState)
+    console.log(this.state.editId)
+    const findAndUpdate = copiedState.map((elem, index) => {
+      if (index === this.state.editId) {
+      return elem = {
+        question: this.state.question,
+        answer: this.state.answer
+      }
+      } else {
+        return elem
+      }
+    })
 
-    console.log(target)
-
-    copiedState.push(formObject)
     this.setState({
-      data: copiedState,
-      question: '',
-      answer: ''
+      data: findAndUpdate,
+      isEditing: false
+    },() => {
+      localStorage.setItem('flashcards', JSON.stringify(this.state.data))
     })
 
   }
+
 
   renderView() {
     const {handleEdit, clickHandler, state, handleChange, handleSubmit} = this
@@ -133,7 +149,7 @@ export default class App extends Component {
         <div className="vertical-center">
           <div className="container">
             <Nav />
-            <EditForm  change={this.handleEditChange} editQuestionValue={this.state.question} editAnswerValue={this.state.answer} click={this.handleEdit}  />
+            <EditForm  submit={this.handleEditSubmit} change={this.handleChange} editQuestionValue={this.state.question} editAnswerValue={this.state.answer} click={this.handleEditCancel}  />
           </div>
         </div>
 
