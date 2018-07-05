@@ -127,7 +127,7 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.state.isEditing) {
+    if (this.state.isEditing && this.state.view === "#cards") {
       return(
         <div className="vertical-center">
           <div className="container">
