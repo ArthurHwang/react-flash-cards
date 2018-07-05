@@ -13,7 +13,7 @@ export default class App extends Component {
       answer: '',
       view: window.location.hash,
       isEditing: false,
-      editId: undefined
+      editId: null
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,7 +25,8 @@ export default class App extends Component {
 
   componentDidMount() {
     if (localStorage.length > 0) {
-      this.hydrateStateWithLocalStorage()
+      const value = JSON.parse(localStorage.getItem('flashcards'));
+      this.setState({data: value})
     }
     window.addEventListener('hashchange', (event) => {
       const newHash = window.location.hash
@@ -38,11 +39,6 @@ export default class App extends Component {
       const json = JSON.stringify(this.state.data)
       localStorage.setItem('flashcards', json);
     }
-  }
-
-  hydrateStateWithLocalStorage() {
-    const value = JSON.parse(localStorage.getItem('flashcards'));
-    this.setState({data: value})
   }
 
   clickHandler() {
@@ -64,35 +60,23 @@ export default class App extends Component {
     event.preventDefault()
     const {data} = this.state
     const id = parseInt(event.target.closest('div').id)
-
     this.setState({
       isEditing: true,
        editId: id
      })
-
-
-    const filter = data.filter((elem, index) => {
+    const found = data.filter((elem, index) => {
       return index === id
     })
-
-    const found = this.state.data.filter((elem) => {
-      return filter[0] === elem
-    })
-
     this.setState({
       question: found[0].question,
       answer: found[0].answer,
     })
   }
 
-
-
   handleEditSubmit(event) {
     event.preventDefault()
     const {target} = event
     const copiedState = [...this.state.data]
-    console.log(copiedState)
-    console.log(this.state.editId)
     const findAndUpdate = copiedState.map((elem, index) => {
       if (index === this.state.editId) {
       return elem = {
@@ -103,16 +87,13 @@ export default class App extends Component {
         return elem
       }
     })
-
     this.setState({
       data: findAndUpdate,
       isEditing: false
     },() => {
       localStorage.setItem('flashcards', JSON.stringify(this.state.data))
     })
-
   }
-
 
   renderView() {
     const {handleEdit, clickHandler, state, handleChange, handleSubmit} = this
@@ -152,7 +133,6 @@ export default class App extends Component {
             <EditForm  submit={this.handleEditSubmit} change={this.handleChange} editQuestionValue={this.state.question} editAnswerValue={this.state.answer} click={this.handleEditCancel}  />
           </div>
         </div>
-
       )
     }
     return(

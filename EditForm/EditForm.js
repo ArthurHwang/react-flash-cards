@@ -1,10 +1,6 @@
 import React from 'react'
 
 const EditForm = ({editQuestionValue, editAnswerValue, submit, click, change}) => {
-
-
-
-
   return(
     <div className="card-container card" >
       <div className="new-card-form card-body">
