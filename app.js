@@ -80,7 +80,7 @@ export default class App extends Component {
           answer: this.state.answer,
         }
       } else {
-        return elem
+        return elem;
       }
     })
     this.setState({
