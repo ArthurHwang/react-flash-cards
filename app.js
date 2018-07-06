@@ -25,6 +25,8 @@ export default class App extends Component {
     this.handleEditCancel = this.handleEditCancel.bind(this)
     this.handleDestroy = this.handleDestroy.bind(this);
     this.hideAnswer = this.hideAnswer.bind(this);
+    this.nextImage = this.nextImage.bind(this);
+    this.previousImage = this.previousImage.bind(this);
   }
 
   componentDidMount() {
@@ -145,53 +147,33 @@ export default class App extends Component {
     return viewRender
   }
 
+  previousImage() {
+    const lastIndex = this.state.data.length - 1;
+    const {currentPracticeCardIndex} = this.state;
+    const shouldResetIndex = currentPracticeCardIndex === 0;
+    const index = shouldResetIndex ? lastIndex : currentPracticeCardIndex - 1;
+    this.setState({
+      currentPracticeCardIndex: index
+    });
+  }
+  nextImage() {
+    const lastIndex = this.state.data.length - 1;
+    const {currentPracticeCardIndex} = this.state;
+    const shouldResetIndex = currentPracticeCardIndex === lastIndex;
+    const index = shouldResetIndex ? 0 : currentPracticeCardIndex + 1;
+
+    this.setState({
+      currentPracticeCardIndex: index
+    });
+  }
+
   hideAnswer(event) {
     this.setState({
       showAnswer: !this.state.showAnswer
     })
   }
 
-//   <React.Fragment>
-//     <h1 className="title text-center">
-//       React Flash Cards
-//       <i className="text-primary fab fa-react" />
-//     </h1>
-//     <div className="vertical-center">
-//       <div className="container">
-//         <Nav />
-//         <CardCarousel
-//           item={this.state.data[this.state.currentPracticeCardIndex]}
-//           click={this.state.hideAnswer}
-//         />
-//     </div>
-//   </div>
-// </React.Fragment>
-
-
   render() {
-    // const { handleEdit, clickHandler, state, handleChange, handleSubmit, handleDestroy } = this
-
-    if (this.state.view === "#practice") {
-      return (
-        <React.Fragment>
-          <h1 className="title text-center">
-          React Flash Cards
-          <i className="text-primary fab fa-react" />
-          </h1>
-          <div className="vertical-center">
-            <div className="container">
-              <Nav />
-              <CardCarousel
-                item={this.state.data[this.state.currentPracticeCardIndex]}
-                click={this.hideAnswer}
-                show={this.state.showAnswer}
-              />
-            </div>
-          </div>
-        </React.Fragment>
-      )
-    }
-
 
     if (this.state.editIndex !== null && this.state.view === "#cards") {
       return (
@@ -209,6 +191,29 @@ export default class App extends Component {
                 editQuestionValue={this.state.question}
                 editAnswerValue={this.state.answer}
                 click={this.handleEditCancel}
+              />
+            </div>
+          </div>
+        </React.Fragment>
+      )
+    }
+    if (this.state.view === "#practice" && this.state.data.length !== 0) {
+      return (
+        
+        <React.Fragment>
+          <h1 className="title text-center">
+          React Flash Cards
+          <i className="text-primary fab fa-react" />
+          </h1>
+          <div className="vertical-center">
+            <div className="container">
+              <Nav />
+              <CardCarousel
+                item={this.state.data[this.state.currentPracticeCardIndex]}
+                click={this.hideAnswer}
+                show={this.state.showAnswer}
+                next={this.nextImage}
+                previous={this.previousImage}
               />
             </div>
           </div>
