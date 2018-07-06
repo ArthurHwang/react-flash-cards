@@ -31,9 +31,9 @@ body {
   bottom: 0;
   cursor: pointer;
   margin-bottom: 15px;
+  margin-right: 200px;
   position: absolute;
-  right: 29px;
-  width: 75px;
+  right: -130px;
 }
 
 .destroy {
@@ -43,8 +43,11 @@ body {
   cursor: pointer;
   margin-bottom: 15px;
   position: absolute;
-  right: 0;
-  width: 75px;
+  right: 30px;
+}
+
+.destroy:focus {
+  outline: none;
 }
 
 .edit:focus {

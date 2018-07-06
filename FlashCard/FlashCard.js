@@ -12,12 +12,12 @@ const FlashCard = ({
       <p className="card-text">
         {answer}
       </p>
-      <button type="submit" onClick={edit} className="text-primary edit">
-        <i className="fas fa-edit" />
-      </button>
-      <button type="submit" onClick={destroy} className="text-primary destroy">
-        <i className="far fa-trash-alt" />
-      </button>
+
+      <i onClick={edit} className="fas fa-edit edit text-warning" />
+
+
+      <i onClick={destroy} className="far fa-trash-alt destroy text-danger" />
+
     </div>
   </div>
 )

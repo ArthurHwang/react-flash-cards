@@ -19,7 +19,6 @@ const FlashCards = ({
       />
     ))
   }
-
   return (
     <div className="card-container">
       {cards}

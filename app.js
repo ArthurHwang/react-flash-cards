@@ -114,7 +114,15 @@ export default class App extends Component {
   }
 
   handleDestroy(event) {
-    alert('hello')
+    const { target } = event
+    const delIndex = parseInt(target.parentNode.parentNode.getAttribute('data-id'))
+    const copy = [...this.state.data]
+    copy.forEach((elem, index) => {
+      if (index === delIndex) {
+        copy.splice(index, 1)
+      }
+    })
+    this.setState({ data: copy }, localStorage.setItem('flashcards', JSON.stringify(this.state.data)))
   }
 
   renderView() {
@@ -159,7 +167,7 @@ export default class App extends Component {
       )
     }
     return (
-      <fragment>
+      <React.Fragment>
         <h1 className="title text-center">
 
         React Flash Cards
@@ -171,7 +179,7 @@ export default class App extends Component {
             {this.renderView()}
           </div>
         </div>
-      </fragment>
+      </React.Fragment>
     )
   }
 }
