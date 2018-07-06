@@ -1,10 +1,13 @@
 import React from 'react'
 
-const Arrow = (props) => {
+const Arrow = ({ direction, clickFunction, glyph}) => {
   return (
-    <h1>Damnit</h1>
+    <div
+      className={`slide-arrow ${direction}`}
+      onClick={ clickFunction }>
+      { glyph }
+    </div>
   )
 }
-
 
 export default Arrow
