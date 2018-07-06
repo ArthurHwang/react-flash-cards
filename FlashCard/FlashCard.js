@@ -12,12 +12,8 @@ const FlashCard = ({
       <p className="card-text">
         {answer}
       </p>
-
       <i onClick={edit} className="fas fa-edit edit text-warning" />
-
-
       <i onClick={destroy} className="far fa-trash-alt destroy text-danger" />
-
     </div>
   </div>
 )

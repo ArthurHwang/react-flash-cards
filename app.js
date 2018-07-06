@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import Nav from './Nav/Nav'
 import Form from './Form/Form'
@@ -90,7 +89,6 @@ export default class App extends Component {
       localStorage.setItem('flashcards', JSON.stringify(this.state.data))
     })
   }
-
 
   handleSubmit(event) {
     const { target } = event
