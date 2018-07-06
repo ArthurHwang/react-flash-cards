@@ -23,7 +23,7 @@ export default class App extends Component {
     this.handleEdit = this.handleEdit.bind(this)
     this.handleEditSubmit = this.handleEditSubmit.bind(this)
     this.handleEditCancel = this.handleEditCancel.bind(this)
-    this.handleDestroy = this.handleDestroy.bind(this)
+    this.handleDestroy = this.handleDestroy.bind(this);
     this.hideAnswer = this.hideAnswer.bind(this);
   }
 
