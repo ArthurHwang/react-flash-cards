@@ -4,7 +4,6 @@ import Empty from './Empty'
 const Form = ({
   view, click, value, change, submit,
 }) => {
-  const counter = `Number of Flashcards: ${value.length}`
   return (
     <div className="card-container card">
       <div className="new-card-form card-body">
@@ -38,12 +37,9 @@ const Form = ({
               placeholder="Enter Answer"
             />
           </div>
-          <button type="submit" className="btn btn-large btn-success">
+          <button type="submit" className="btn-save-card btn btn-large btn-success">
             Save
           </button>
-          <p className="counter">
-            { counter }
-          </p>
         </form>
       </div>
     </div>

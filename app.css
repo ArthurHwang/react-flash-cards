@@ -15,7 +15,7 @@ body {
 }
 
 .title {
-  margin-bottom: 45px;
+  margin-top: 10px;
 }
 
 .vertical-center {
@@ -59,18 +59,22 @@ body {
 }
 
 .btn-edit-save {
-  margin-right: 10px;
-  margin-top: 10px;
-  width: 100px;
+  margin-top: 20px;
+  width: 100%;
 }
 
 .btn-edit-cancel {
   margin-top: 10px;
-  width: 100px;
+  width: 100%;
 }
 
 .card-container {
   margin: auto;
   margin-top: -150px;
   width: 70%;
+}
+
+.btn-save-card {
+  width: 100%;
+  margin-top: 20px;
 }

@@ -115,18 +115,12 @@ export default class App extends Component {
     const { target } = event
     const delIndex = parseInt(target.parentNode.parentNode.getAttribute('data-id'))
     const copy = [...this.state.data]
-    copy.forEach((elem, index) => {
-      if (index === delIndex) {
-        copy.splice(index, 1)
-      }
-    })
+    copy.splice(delIndex, 1)
     this.setState({ data: copy }, localStorage.setItem('flashcards', JSON.stringify(this.state.data)))
   }
 
   renderView() {
-    const {
-      handleEdit, clickHandler, state, handleChange, handleSubmit, handleDestroy,
-    } = this
+    const { handleEdit, clickHandler, state, handleChange, handleSubmit, handleDestroy } = this
     const viewRender = state.view === "#cards"
       ? (
         <FlashCards
@@ -150,26 +144,31 @@ export default class App extends Component {
   render() {
     if (this.state.editIndex !== null && this.state.view === "#cards") {
       return (
-        <div className="vertical-center">
-          <div className="container">
-            <Nav />
-            <EditForm
-              submit={this.handleEditSubmit}
-              change={this.handleChange}
-              editQuestionValue={this.state.question}
-              editAnswerValue={this.state.answer}
-              click={this.handleEditCancel}
-            />
+        <React.Fragment>
+          <h1 className="title text-center">
+          React Flash Cards
+          <i className="text-primary fab fa-react" />
+          </h1>
+          <div className="vertical-center">
+            <div className="container">
+              <Nav />
+              <EditForm
+                submit={this.handleEditSubmit}
+                change={this.handleChange}
+                editQuestionValue={this.state.question}
+                editAnswerValue={this.state.answer}
+                click={this.handleEditCancel}
+              />
+            </div>
           </div>
-        </div>
+        </React.Fragment>
       )
     }
     return (
       <React.Fragment>
         <h1 className="title text-center">
-
         React Flash Cards
-          <i className="text-primary fab fa-react" />
+        <i className="text-primary fab fa-react" />
         </h1>
         <div className="vertical-center">
           <div className="container">
