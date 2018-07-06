@@ -17,7 +17,7 @@ export default class App extends Component {
       currentPracticeCardIndex: 0,
       showAnswer: false
     })
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
     this.clickHandler = this.clickHandler.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
