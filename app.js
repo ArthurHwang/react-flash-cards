@@ -174,7 +174,6 @@ export default class App extends Component {
   }
 
   render() {
-
     if (this.state.editIndex !== null && this.state.view === "#cards") {
       return (
         <React.Fragment>
@@ -199,7 +198,6 @@ export default class App extends Component {
     }
     if (this.state.view === "#practice" && this.state.data.length !== 0) {
       return (
-
         <React.Fragment>
           <h1 className="title text-center">
           React Flash Cards
