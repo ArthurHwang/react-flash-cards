@@ -30,7 +30,7 @@ export default class App extends Component {
     }
     window.addEventListener('hashchange', (event) => {
       const newHash = window.location.hash
-      this.setState({ view: newHash })
+      this.setState({ view: newHash });
     })
   }
 
