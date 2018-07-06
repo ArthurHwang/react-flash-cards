@@ -7,6 +7,7 @@ const Nav = (props) => {
         <ul className="navbar-nav">
           <li><a className="nav-link" href="#cards">Cards <i className="text-warning fas fa-sticky-note"></i></a></li>
           <li><a className="nav-link" href="#new">New <i className="text-success fas fa-plus-circle"></i></a></li>
+          <li><a className="nav-link" href="#practice">Practice <i class="text-info fas fa-tasks"></i></a></li>
         </ul>
       </div>
     </nav>
