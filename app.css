@@ -14,6 +14,10 @@ body {
   top: 0;
 }
 
+.title {
+  margin-bottom: 45px;
+}
+
 .vertical-center {
   align-items: center;
   display: flex;
