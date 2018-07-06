@@ -3,6 +3,7 @@ import Nav from './Nav/Nav'
 import Form from './Form/Form'
 import FlashCards from './FlashCard/FlashCards'
 import EditForm from './EditForm/EditForm'
+import CardCarousel from './CardCarousel/CardCarousel'
 
 export default class App extends Component {
   constructor(props) {
@@ -13,14 +14,19 @@ export default class App extends Component {
       answer: '',
       view: window.location.hash,
       editIndex: null,
+      currentPracticeCardIndex: 0,
+      showAnswer: false
     })
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
     this.clickHandler = this.clickHandler.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
     this.handleEditSubmit = this.handleEditSubmit.bind(this)
     this.handleEditCancel = this.handleEditCancel.bind(this)
-    this.handleDestroy = this.handleDestroy.bind(this)
+    this.handleDestroy = this.handleDestroy.bind(this);
+    this.hideAnswer = this.hideAnswer.bind(this);
+    this.nextImage = this.nextImage.bind(this);
+    this.previousImage = this.previousImage.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +36,7 @@ export default class App extends Component {
     }
     window.addEventListener('hashchange', (event) => {
       const newHash = window.location.hash
-      this.setState({ view: newHash })
+      this.setState({ view: newHash });
     })
   }
 
@@ -43,7 +49,7 @@ export default class App extends Component {
 
   clickHandler() {
     window.location.hash = "#new"
-    this.setState({ view: '#new' })
+    this.setState({ view: '#new' });
   }
 
   handleChange({ target }) {
@@ -141,6 +147,32 @@ export default class App extends Component {
     return viewRender
   }
 
+  previousImage() {
+    const lastIndex = this.state.data.length - 1;
+    const {currentPracticeCardIndex} = this.state;
+    const shouldResetIndex = currentPracticeCardIndex === 0;
+    const index = shouldResetIndex ? lastIndex : currentPracticeCardIndex - 1;
+    this.setState({
+      currentPracticeCardIndex: index
+    });
+  }
+  nextImage() {
+    const lastIndex = this.state.data.length - 1;
+    const {currentPracticeCardIndex} = this.state;
+    const shouldResetIndex = currentPracticeCardIndex === lastIndex;
+    const index = shouldResetIndex ? 0 : currentPracticeCardIndex + 1;
+
+    this.setState({
+      currentPracticeCardIndex: index
+    });
+  }
+
+  hideAnswer(event) {
+    this.setState({
+      showAnswer: !this.state.showAnswer
+    })
+  }
+
   render() {
     if (this.state.editIndex !== null && this.state.view === "#cards") {
       return (
@@ -158,6 +190,28 @@ export default class App extends Component {
                 editQuestionValue={this.state.question}
                 editAnswerValue={this.state.answer}
                 click={this.handleEditCancel}
+              />
+            </div>
+          </div>
+        </React.Fragment>
+      )
+    }
+    if (this.state.view === "#practice" && this.state.data.length !== 0) {
+      return (
+        <React.Fragment>
+          <h1 className="title text-center">
+          React Flash Cards
+          <i className="text-primary fab fa-react" />
+          </h1>
+          <div className="vertical-center">
+            <div className="container">
+              <Nav />
+              <CardCarousel
+                item={this.state.data[this.state.currentPracticeCardIndex]}
+                click={this.hideAnswer}
+                show={this.state.showAnswer}
+                next={this.nextImage}
+                previous={this.previousImage}
               />
             </div>
           </div>
