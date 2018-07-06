@@ -112,6 +112,10 @@ export default class App extends Component {
     target.reset()
   }
 
+  handleDelete() {
+    
+  }
+
   renderView() {
     const {
       handleEdit, clickHandler, state, handleChange, handleSubmit,
@@ -155,6 +159,7 @@ export default class App extends Component {
     return (
       <fragment>
         <h1 className="title text-center">
+
         React Flash Cards
           <i className="text-primary fab fa-react" />
         </h1>
