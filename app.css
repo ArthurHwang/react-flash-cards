@@ -21,3 +21,37 @@ html, body  {
   display: flex;
   align-items: center;
 }
+
+.flashcard {
+  margin-bottom: 5px;
+}
+
+.edit {
+  margin-bottom: 6px;
+  position: absolute;
+  width: 75px;
+  border: none;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.edit:focus{
+    outline: none;
+}
+
+.btn-edit-save {
+  width: 100px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.btn-edit-cancel {
+  margin-top: 10px;
+  width: 100px;
+}
+
+.card-container {
+  margin: auto;
+  width: 75%;
+}
