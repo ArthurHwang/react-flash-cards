@@ -113,8 +113,8 @@ export default class App extends Component {
     target.reset()
   }
 
-  handleDestroy() {
-
+  handleDestroy(event) {
+    alert('hello')
   }
 
   renderView() {
