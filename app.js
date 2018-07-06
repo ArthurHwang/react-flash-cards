@@ -13,9 +13,9 @@ export default class App extends Component {
       question: '',
       answer: '',
       view: window.location.hash,
-      editIndex: null,
-      currentPracticeCardIndex: 0,
-      showAnswer: false
+      editIndex: null
+      // currentPracticeCardIndex: 0,
+      // showAnswer: false
     })
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -24,9 +24,9 @@ export default class App extends Component {
     this.handleEditSubmit = this.handleEditSubmit.bind(this)
     this.handleEditCancel = this.handleEditCancel.bind(this)
     this.handleDestroy = this.handleDestroy.bind(this);
-    this.hideAnswer = this.hideAnswer.bind(this);
-    this.nextImage = this.nextImage.bind(this);
-    this.previousImage = this.previousImage.bind(this);
+    // this.hideAnswer = this.hideAnswer.bind(this);
+    // this.nextImage = this.nextImage.bind(this);
+    // this.previousImage = this.previousImage.bind(this);
   }
 
   componentDidMount() {
@@ -147,31 +147,29 @@ export default class App extends Component {
     return viewRender
   }
 
-  previousImage() {
-    const lastIndex = this.state.data.length - 1;
-    const {currentPracticeCardIndex} = this.state;
-    const shouldResetIndex = currentPracticeCardIndex === 0;
-    const index = shouldResetIndex ? lastIndex : currentPracticeCardIndex - 1;
-    this.setState({
-      currentPracticeCardIndex: index
-    });
-  }
-  nextImage() {
-    const lastIndex = this.state.data.length - 1;
-    const {currentPracticeCardIndex} = this.state;
-    const shouldResetIndex = currentPracticeCardIndex === lastIndex;
-    const index = shouldResetIndex ? 0 : currentPracticeCardIndex + 1;
+  // previousImage() {
+  //   const lastIndex = this.state.data.length - 1;
+  //   const {currentPracticeCardIndex} = this.state;
+  //   const shouldResetIndex = currentPracticeCardIndex === 0;
+  //   const index = shouldResetIndex ? lastIndex : currentPracticeCardIndex - 1;
+  //   this.setState({
+  //     currentPracticeCardIndex: index
+  //   });
+  // }
+  // nextImage() {
+  //   const lastIndex = this.state.data.length - 1;
+  //   const {currentPracticeCardIndex} = this.state;
+  //   const shouldResetIndex = currentPracticeCardIndex === lastIndex;
+  //   const index = shouldResetIndex ? 0 : currentPracticeCardIndex + 1;    this.setState({
+  //     currentPracticeCardIndex: index
+  //   });
+  // }
 
-    this.setState({
-      currentPracticeCardIndex: index
-    });
-  }
-
-  hideAnswer(event) {
-    this.setState({
-      showAnswer: !this.state.showAnswer
-    })
-  }
+  // hideAnswer(event) {
+  //   this.setState({
+  //     showAnswer: !this.state.showAnswer
+  //   })
+  // }
 
   render() {
     if (this.state.editIndex !== null && this.state.view === "#cards") {
@@ -207,11 +205,13 @@ export default class App extends Component {
             <div className="container">
               <Nav />
               <CardCarousel
-                item={this.state.data[this.state.currentPracticeCardIndex]}
-                click={this.hideAnswer}
-                show={this.state.showAnswer}
-                next={this.nextImage}
-                previous={this.previousImage}
+                stuff={this}
+                // item={this.state.data[this.state.currentPracticeCardIndex]}
+                // click={this.hideAnswer}
+                // show={this.state.showAnswer}
+                // next={this.nextImage}
+                // previous={this.previousImage}
+                state={this.state}
               />
             </div>
           </div>
