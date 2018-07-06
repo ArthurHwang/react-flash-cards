@@ -1,49 +1,67 @@
-html, body  {
+html,
+body {
+  font-family: 'Cabin', sans-serif;
+  font-size: 1rem;
   height: 100%;
   width: 100%;
-  font-size: 1rem;
-  font-family: 'Cabin', sans-serif;
 }
 
 #nav-container {
-  border-radius: 10px;
-  position: fixed;
-  top:0;
-  left: 0;
   background-color: none;
+  border-radius: 10px;
+  left: 0;
+  position: fixed;
+  top: 0;
+}
+
+.title {
+  margin-bottom: 45px;
 }
 
 .vertical-center {
+  align-items: center;
+  display: flex;
   min-height: 100;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  display: flex;
-  align-items: center;
 }
 
 .flashcard {
-  margin-bottom: 5px;
+  margin: 10px 0;
 }
 
 .edit {
-  margin-bottom: 6px;
-  position: absolute;
-  width: 75px;
+  background: transparent;
   border: none;
-  right: 0;
   bottom: 0;
   cursor: pointer;
+  margin-bottom: 15px;
+  margin-right: 200px;
+  position: absolute;
+  right: -130px;
 }
 
-.edit:focus{
-    outline: none;
+.destroy {
+  background: transparent;
+  border: none;
+  bottom: 0;
+  cursor: pointer;
+  margin-bottom: 15px;
+  position: absolute;
+  right: 30px;
+}
+
+.destroy:focus {
+  outline: none;
+}
+
+.edit:focus {
+  outline: none;
 }
 
 .btn-edit-save {
-  width: 100px;
-  margin-top: 10px;
   margin-right: 10px;
+  margin-top: 10px;
+  width: 100px;
 }
 
 .btn-edit-cancel {
@@ -53,5 +71,6 @@ html, body  {
 
 .card-container {
   margin: auto;
-  width: 75%;
+  margin-top: -150px;
+  width: 70%;
 }

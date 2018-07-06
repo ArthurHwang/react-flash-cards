@@ -1,5 +1,4 @@
-
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Nav from './Nav/Nav'
 import Form from './Form/Form'
 import FlashCards from './FlashCard/FlashCards'
@@ -13,7 +12,7 @@ export default class App extends Component {
       question: '',
       answer: '',
       view: window.location.hash,
-      editIndex: null
+      editIndex: null,
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,16 +20,17 @@ export default class App extends Component {
     this.handleEdit = this.handleEdit.bind(this)
     this.handleEditSubmit = this.handleEditSubmit.bind(this)
     this.handleEditCancel = this.handleEditCancel.bind(this)
+    this.handleDestroy = this.handleDestroy.bind(this)
   }
 
   componentDidMount() {
     if (localStorage.length > 0) {
       const value = JSON.parse(localStorage.getItem('flashcards'));
-      this.setState({data: value})
+      this.setState({ data: value })
     }
     window.addEventListener('hashchange', (event) => {
       const newHash = window.location.hash
-      this.setState({view: newHash})
+      this.setState({ view: newHash })
     })
   }
 
@@ -43,28 +43,26 @@ export default class App extends Component {
 
   clickHandler() {
     window.location.hash = "#new"
-    this.setState({view: '#new'})
+    this.setState({ view: '#new' })
   }
 
-  handleChange({target}) {
+  handleChange({ target }) {
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
     })
   }
 
   handleEditCancel() {
-    this.setState({editIndex: null})
+    this.setState({ editIndex: null })
   }
 
   handleEdit(event) {
-    const {data} = this.state
+    const { data } = this.state
     const id = parseInt(event.target.parentNode.parentNode.getAttribute('data-id'))
     this.setState({
-       editIndex: id
-     })
-    const found = data.find((elem, index) => {
-      return index === id
+      editIndex: id,
     })
+    const found = data.find((elem, index) => index === id)
     this.setState({
       question: found.question,
       answer: found.answer,
@@ -73,43 +71,27 @@ export default class App extends Component {
 
   handleEditSubmit(event) {
     event.preventDefault()
-    const {target} = event
+    const { target } = event
     const findAndUpdate = this.state.data.map((elem, index) => {
       if (index === this.state.editIndex) {
-      return elem = {
-        question: this.state.question,
-        answer: this.state.answer
-      }
+        return elem = {
+          question: this.state.question,
+          answer: this.state.answer,
+        }
       } else {
-        return elem
+        return elem;
       }
     })
     this.setState({
       data: findAndUpdate,
-      editIndex: null
-    },() => {
+      editIndex: null,
+    }, () => {
       localStorage.setItem('flashcards', JSON.stringify(this.state.data))
     })
   }
 
-  renderView() {
-    const {handleEdit, clickHandler, state, handleChange, handleSubmit} = this
-    const viewRender = state.view === "#cards" ?
-                          <FlashCards
-                            edit={handleEdit}
-                            click={clickHandler}
-                            data={state.data}/>
-                            :
-                          <Form
-                            view={state.view}
-                            value={state.data}
-                            change={handleChange}
-                            submit={handleSubmit}/>
-    return viewRender
-  }
-
   handleSubmit(event) {
-    const {target} = event
+    const { target } = event
     if (target.question.value === "" || target.answer.value === "") {
       alert('Flash card values must not be empty!')
       return
@@ -118,20 +100,56 @@ export default class App extends Component {
     const copiedState = [...this.state.data]
     const formObject = {
       question: this.state.question,
-      answer: this.state.answer
+      answer: this.state.answer,
     }
     copiedState.push(formObject)
     this.setState({
       data: copiedState,
       question: '',
-      answer: ''
+      answer: '',
     })
     target.reset()
   }
 
+  handleDestroy(event) {
+    const { target } = event
+    const delIndex = parseInt(target.parentNode.parentNode.getAttribute('data-id'))
+    const copy = [...this.state.data]
+    copy.forEach((elem, index) => {
+      if (index === delIndex) {
+        copy.splice(index, 1)
+      }
+    })
+    this.setState({ data: copy }, localStorage.setItem('flashcards', JSON.stringify(this.state.data)))
+  }
+
+  renderView() {
+    const {
+      handleEdit, clickHandler, state, handleChange, handleSubmit, handleDestroy,
+    } = this
+    const viewRender = state.view === "#cards"
+      ? (
+        <FlashCards
+          edit={handleEdit}
+          click={clickHandler}
+          data={state.data}
+          destroy={handleDestroy}
+        />
+      )
+      : (
+        <Form
+          view={state.view}
+          value={state.data}
+          change={handleChange}
+          submit={handleSubmit}
+        />
+      )
+    return viewRender
+  }
+
   render() {
     if (this.state.editIndex !== null && this.state.view === "#cards") {
-      return(
+      return (
         <div className="vertical-center">
           <div className="container">
             <Nav />
@@ -140,19 +158,26 @@ export default class App extends Component {
               change={this.handleChange}
               editQuestionValue={this.state.question}
               editAnswerValue={this.state.answer}
-              click={this.handleEditCancel}  />
+              click={this.handleEditCancel}
+            />
           </div>
         </div>
       )
     }
-    return(
-      <div className="vertical-center">
-        <div className="container">
-          <Nav />
-          <h1 className="title text-center">React Flash Cards <i className="text-primary fab fa-react"></i></h1>
-          {this.renderView()}
+    return (
+      <React.Fragment>
+        <h1 className="title text-center">
+
+        React Flash Cards
+          <i className="text-primary fab fa-react" />
+        </h1>
+        <div className="vertical-center">
+          <div className="container">
+            <Nav />
+            {this.renderView()}
+          </div>
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 }
