@@ -49,7 +49,7 @@ export default class App extends Component {
 
   clickHandler() {
     window.location.hash = "#new"
-    this.setState({ view: '#new' })
+    this.setState({ view: '#new' });
   }
 
   handleChange({ target }) {
@@ -199,7 +199,7 @@ export default class App extends Component {
     }
     if (this.state.view === "#practice" && this.state.data.length !== 0) {
       return (
-        
+
         <React.Fragment>
           <h1 className="title text-center">
           React Flash Cards
