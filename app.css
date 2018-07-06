@@ -53,5 +53,6 @@ body {
 
 .card-container {
   margin: auto;
-  width: 50%;
+  margin-top: -150px;
+  width: 70%;
 }

@@ -153,16 +153,18 @@ export default class App extends Component {
       )
     }
     return (
-      <div className="vertical-center">
-        <div className="container">
-          <Nav />
-          <h1 className="title text-center">
-            React Flash Cards
-            <i className="text-primary fab fa-react" />
-          </h1>
-          {this.renderView()}
+      <fragment>
+        <h1 className="title text-center">
+        React Flash Cards
+          <i className="text-primary fab fa-react" />
+        </h1>
+        <div className="vertical-center">
+          <div className="container">
+            <Nav />
+            {this.renderView()}
+          </div>
         </div>
-      </div>
+      </fragment>
     )
   }
 }
