@@ -13,12 +13,9 @@ const FlashCard = ({
         {answer}
       </p>
       <button type="submit" onClick={edit} className="text-primary edit">
-
         <i className="fas fa-edit" />
       </button>
       <button type="submit" onClick={destroy} className="text-primary destroy">
-
-
         <i className="far fa-trash-alt" />
       </button>
     </div>
