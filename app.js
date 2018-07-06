@@ -3,6 +3,7 @@ import Nav from './Nav/Nav'
 import Form from './Form/Form'
 import FlashCards from './FlashCard/FlashCards'
 import EditForm from './EditForm/EditForm'
+import CardCarousel from './CardCarousel/CardCarousel'
 
 export default class App extends Component {
   constructor(props) {
@@ -13,6 +14,8 @@ export default class App extends Component {
       answer: '',
       view: window.location.hash,
       editIndex: null,
+      currentPracticeCardIndex: 0,
+      showAnswer: false
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,6 +24,7 @@ export default class App extends Component {
     this.handleEditSubmit = this.handleEditSubmit.bind(this)
     this.handleEditCancel = this.handleEditCancel.bind(this)
     this.handleDestroy = this.handleDestroy.bind(this)
+    this.hideAnswer = this.hideAnswer.bind(this);
   }
 
   componentDidMount() {
@@ -141,7 +145,54 @@ export default class App extends Component {
     return viewRender
   }
 
+  hideAnswer(event) {
+    this.setState({
+      showAnswer: !this.state.showAnswer
+    })
+  }
+
+//   <React.Fragment>
+//     <h1 className="title text-center">
+//       React Flash Cards
+//       <i className="text-primary fab fa-react" />
+//     </h1>
+//     <div className="vertical-center">
+//       <div className="container">
+//         <Nav />
+//         <CardCarousel
+//           item={this.state.data[this.state.currentPracticeCardIndex]}
+//           click={this.state.hideAnswer}
+//         />
+//     </div>
+//   </div>
+// </React.Fragment>
+
+
   render() {
+    // const { handleEdit, clickHandler, state, handleChange, handleSubmit, handleDestroy } = this
+
+    if (this.state.view === "#practice") {
+      return (
+        <React.Fragment>
+          <h1 className="title text-center">
+          React Flash Cards
+          <i className="text-primary fab fa-react" />
+          </h1>
+          <div className="vertical-center">
+            <div className="container">
+              <Nav />
+              <CardCarousel
+                item={this.state.data[this.state.currentPracticeCardIndex]}
+                click={this.hideAnswer}
+                show={this.state.showAnswer}
+              />
+            </div>
+          </div>
+        </React.Fragment>
+      )
+    }
+
+
     if (this.state.editIndex !== null && this.state.view === "#cards") {
       return (
         <React.Fragment>
