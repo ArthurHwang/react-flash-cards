@@ -2,7 +2,7 @@ import React from 'react'
 import FlashCard from './FlashCard'
 import Empty from '../Form/Empty'
 
-const FlashCards = ({ edit, click, data }) => {
+const FlashCards = ({ edit, click, data, destroy}) => {
   const cardData = [...data]
   let cards = <Empty click={click} />
   if (data.length) {
@@ -11,6 +11,7 @@ const FlashCards = ({ edit, click, data }) => {
         id={index}
         edit={edit}
         key={index}
+        destroy={destroy}
         question={elem.question}
         answer={elem.answer}
       />

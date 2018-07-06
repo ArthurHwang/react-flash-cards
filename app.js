@@ -21,6 +21,7 @@ export default class App extends Component {
     this.handleEdit = this.handleEdit.bind(this)
     this.handleEditSubmit = this.handleEditSubmit.bind(this)
     this.handleEditCancel = this.handleEditCancel.bind(this)
+    this.handleDestroy = this.handleDestroy.bind(this)
   }
 
   componentDidMount() {
@@ -112,13 +113,13 @@ export default class App extends Component {
     target.reset()
   }
 
-  handleDelete() {
-    
+  handleDestroy() {
+
   }
 
   renderView() {
     const {
-      handleEdit, clickHandler, state, handleChange, handleSubmit,
+      handleEdit, clickHandler, state, handleChange, handleSubmit, handleDestroy,
     } = this
     const viewRender = state.view === "#cards"
       ? (
@@ -126,6 +127,7 @@ export default class App extends Component {
           edit={handleEdit}
           click={clickHandler}
           data={state.data}
+          destroy={handleDestroy}
         />
       )
       : (

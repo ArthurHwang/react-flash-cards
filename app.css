@@ -30,7 +30,18 @@ body {
   border: none;
   bottom: 0;
   cursor: pointer;
-  margin-bottom: 6px;
+  margin-bottom: 15px;
+  position: absolute;
+  right: 29px;
+  width: 75px;
+}
+
+.destroy {
+  background: transparent;
+  border: none;
+  bottom: 0;
+  cursor: pointer;
+  margin-bottom: 15px;
   position: absolute;
   right: 0;
   width: 75px;

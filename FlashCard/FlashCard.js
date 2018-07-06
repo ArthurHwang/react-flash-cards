@@ -1,7 +1,7 @@
 import React from 'react'
 
 const FlashCard = ({
-  question, answer, edit, id,
+  question, answer, edit, id, destroy,
 }) => (
   <div data-id={id} className="flashcard card">
     <div className="card-header bg-warning" />
@@ -12,9 +12,14 @@ const FlashCard = ({
       <p className="card-text">
         {answer}
       </p>
-      <button onClick={edit} className="text-primary edit">
-        Edit
+      <button type="submit" onClick={edit} className="text-primary edit">
+
         <i className="fas fa-edit" />
+      </button>
+      <button type="submit" onClick={destroy} className="text-primary destroy">
+
+
+        <i className="far fa-trash-alt" />
       </button>
     </div>
   </div>
