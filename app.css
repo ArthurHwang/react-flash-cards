@@ -6,12 +6,17 @@ body {
   width: 100%;
 }
 
+ul {
+  list-style-type: none;
+}
+
 #nav-container {
   background-color: none;
   border-radius: 10px;
   left: 0;
   position: fixed;
   top: 0;
+  height: 10px;
 }
 
 .title {
@@ -77,17 +82,17 @@ body {
 .slide-arrow {
   color: #007bff;
   cursor: pointer;
-  font-size: 4rem;
+  font-size: 2rem;
   position: fixed;
   top: 49%;
 }
 
 .slide-arrow.right {
-  right: 1%;
+  right: 10%;
 }
 
 .slide-arrow.left {
-  left: 1%;
+  left: 10%;
 }
 
 .practice {
@@ -102,4 +107,26 @@ body {
 .answer-text {
   margin-left: 0;
   font-size: 20px;
+}
+
+.carousel-indicators {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.carousel-indicator {
+  display: block;
+  width: 24px;
+  margin-top: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 3px;
+  background-color: black;
+  cursor: pointer;
+}
+
+.carousel-indicator-active {
+  background-color: #d9534f;
 }

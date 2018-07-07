@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Arrow from './Arrow'
+import Indicators from '../Indicators/Indicators'
 
 export default class CardCarousel extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export default class CardCarousel extends Component {
 
   render() {
     const item = this.props.data[this.state.currentPracticeCardIndex]
-    let showAnswer = "Click to Show Answer!"
+    let showAnswer = " Click to Show Answer!"
     if (this.state.showAnswer) {
       showAnswer = (
         <strong>
@@ -50,27 +51,26 @@ export default class CardCarousel extends Component {
       )
     }
     return (
-      <React.Fragment>
-        <h1 className="practice">
-Practice your flashcards!
-        </h1>
-        <div className="carousel">
-          <Arrow direction="left" onClick={this.previousCard} />
-          <div className="flashcard card">
-            <div className="card-header bg-warning" />
-            <div className="card-body">
-              <h5 className="card-title">
-                {item.question}
-              </h5>
+      <div className="card-container carousel">
+        <Arrow direction="left" onClick={this.previousCard} />
+        <div className="flashcard card">
+          <div className="card-header bg-danger" />
+          <div className="card-body">
+            <h5 className="card-title">
+              {item.question}
+            </h5>
+            <p className="answer-text card-text">
               <i onClick={this.hideAnswer} className="show-answer text-danger fas fa-angle-double-down" />
-              <p className="answer-text card-text">
-                {showAnswer}
-              </p>
-            </div>
+              {showAnswer}
+            </p>
           </div>
-          <Arrow direction="right" onClick={this.nextCard} />
         </div>
-      </React.Fragment>
+        <Arrow direction="right" onClick={this.nextCard} />
+        <Indicators
+          data={this.props.data}
+          activeIndex={this.state.currentPracticeCardIndex}
+        />
+      </div>
     )
   }
 }

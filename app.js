@@ -13,7 +13,7 @@ export default class App extends Component {
       data: [],
       question: '',
       answer: '',
-      view: '#new',
+      view: window.location.hash,
       editIndex: null,
     })
     this.handleChange = this.handleChange.bind(this);
@@ -121,7 +121,8 @@ export default class App extends Component {
 
   renderView() {
     const {
-      handleEditSubmit, handleEditCancel, handleEdit, clickHandler, state, handleChange, handleSubmit, handleDestroy,
+      handleEditSubmit, handleEditCancel, handleEdit,
+      clickHandler, state, handleChange, handleSubmit, handleDestroy,
     } = this
     let viewRender = null
     if (state.view === "#new") {
@@ -175,7 +176,7 @@ export default class App extends Component {
       <React.Fragment>
         <h1 className="title text-center">
         React Flash Cards
-          <i className="text-primary fab fa-react" />
+          <i className="text-danger fab fa-react" />
         </h1>
         <div className="vertical-center">
           <div className="container">

@@ -33,7 +33,7 @@ const Form = ({ view, value, onChange, onSubmit }) => (
             placeholder="Enter Answer"
           />
         </div>
-        <button type="submit" className="btn-save-card btn btn-large btn-success">
+        <button type="submit" className="btn-save-card btn btn-success">
             Save
         </button>
       </form>

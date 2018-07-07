@@ -6,7 +6,7 @@ const Empty = ({ onClick }) => (
       You have no flash cards
     </h1>
     <button
-      className="btn-lg btn btn-success"
+      className="btn btn-success"
       href="#new"
       id="make-one-button"
       onClick={onClick}
