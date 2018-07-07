@@ -15,15 +15,14 @@ body {
 }
 
 .title {
-  margin-top: 10px;
-  margin-bottom: 50px;
+  padding-top: 10px;
 }
 
 .vertical-center {
   align-items: center;
   display: flex;
-  min-height: 100;
-  min-height: 100vh;
+  min-height: 90;
+  min-height: 90vh;
 }
 
 .flashcard {
@@ -71,7 +70,6 @@ body {
 
 .card-container {
   margin: auto;
-  margin-top: -150px;
   width: 70%;
 }
 
@@ -91,7 +89,7 @@ body {
   cursor: pointer;
   font-size: 4rem;
   position: fixed;
-  top: 50%;
+  top: 43%;
 }
 
 .slide-arrow.right {
