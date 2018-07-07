@@ -1,11 +1,9 @@
 import React from 'react'
 
-const EditForm = ({
-  editQuestionValue, editAnswerValue, submit, click, change,
-}) => (
+const EditForm = ({ editQuestionValue, editAnswerValue, onSubmit, onClick, onChange }) => (
   <div className="card-container card">
     <div className="new-card-form card-body">
-      <form className="user-form" onSubmit={submit}>
+      <form className="user-form" onSubmit={onSubmit}>
         <h1>
           Edit Flash Card
         </h1>
@@ -16,7 +14,7 @@ const EditForm = ({
           <input
             type="text"
             value={editQuestionValue}
-            onChange={change}
+            onChange={onChange}
             name="question"
             className="form-control"
             placeholder="Enter Question"
@@ -29,7 +27,7 @@ const EditForm = ({
           <input
             type="text"
             value={editAnswerValue}
-            onChange={change}
+            onChange={onChange}
             name="answer"
             className="form-control"
             placeholder="Enter Answer"
@@ -38,7 +36,7 @@ const EditForm = ({
         <button type="submit" className="btn-edit-save btn btn-large btn-success">
           Save Edit
         </button>
-        <button onClick={click} type="submit" className="btn-edit-cancel btn btn-large btn-danger">
+        <button onClick={onClick} type="submit" className="btn-edit-cancel btn btn-large btn-danger">
           Cancel
         </button>
       </form>

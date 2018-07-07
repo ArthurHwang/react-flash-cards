@@ -9,11 +9,11 @@ export default class CardCarousel extends Component {
       showAnswer: false,
     })
     this.hideAnswer = this.hideAnswer.bind(this);
-    this.nextImage = this.nextImage.bind(this);
-    this.previousImage = this.previousImage.bind(this);
+    this.nextCard = this.nextCard.bind(this);
+    this.previousCard = this.previousCard.bind(this);
   }
 
-  previousImage() {
+  previousCard() {
     const lastIndex = this.props.data.length - 1;
     const { currentPracticeCardIndex } = this.state;
     const shouldResetIndex = currentPracticeCardIndex === 0;
@@ -23,7 +23,7 @@ export default class CardCarousel extends Component {
     });
   }
 
-  nextImage() {
+  nextCard() {
     const lastIndex = this.props.data.length - 1;
     const { currentPracticeCardIndex } = this.state;
     const shouldResetIndex = currentPracticeCardIndex === lastIndex;
@@ -55,7 +55,7 @@ export default class CardCarousel extends Component {
 Practice your flashcards!
         </h1>
         <div className="carousel">
-          <Arrow direction="left" clickFunction={this.previousImage} />
+          <Arrow direction="left" onClick={this.previousCard} />
           <div className="flashcard card">
             <div className="card-header bg-warning" />
             <div className="card-body">
@@ -68,7 +68,7 @@ Practice your flashcards!
               </p>
             </div>
           </div>
-          <Arrow direction="right" clickFunction={this.nextImage} />
+          <Arrow direction="right" onClick={this.nextCard} />
         </div>
       </React.Fragment>
     )

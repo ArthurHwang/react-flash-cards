@@ -1,11 +1,11 @@
 import React from 'react'
 
 const Form = ({
-  view, click, value, change, submit,
+  view, click, value, onChange, onSubmit,
 }) => (
   <div className="card-container card">
     <div className="new-card-form card-body">
-      <form className="user-form" onSubmit={submit}>
+      <form className="user-form" onSubmit={onSubmit}>
         <h1>
             Create a Flash Card
         </h1>
@@ -29,7 +29,7 @@ const Form = ({
           <input
             type="text"
             value={value.answer}
-            onChange={change}
+            onChange={onChange}
             name="answer"
             className="form-control"
             placeholder="Enter Answer"

@@ -21,7 +21,6 @@ body {
 .vertical-center {
   align-items: center;
   display: flex;
-  min-height: 90;
   min-height: 90vh;
 }
 
@@ -50,10 +49,7 @@ body {
   right: 30px;
 }
 
-.destroy:focus {
-  outline: none;
-}
-
+.destroy:focus,
 .edit:focus {
   outline: none;
 }
@@ -78,18 +74,12 @@ body {
   margin-top: 20px;
 }
 
-.image-slide {
-  margin-left: 12%;
-  height: 75%;
-  width: 75%;
-}
-
 .slide-arrow {
   color: #007bff;
   cursor: pointer;
   font-size: 4rem;
   position: fixed;
-  top: 43%;
+  top: 49%;
 }
 
 .slide-arrow.right {
@@ -101,7 +91,6 @@ body {
 }
 
 .practice {
-  margin-top: -150px;
   text-align: center;
 }
 
@@ -109,11 +98,8 @@ body {
   font-weight: 700;
 }
 
-.show-answer {
-  margin-left: 0;
-  font-size: 20px;
-}
-
+.show-answer,
 .answer-text {
+  margin-left: 0;
   font-size: 20px;
 }

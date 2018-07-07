@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Empty = ({ click }) => (
+const Empty = ({ onClick }) => (
   <div className="text-center">
     <h1 className="">
       You have no flash cards
@@ -9,7 +9,7 @@ const Empty = ({ click }) => (
       className="btn-lg btn btn-success"
       href="#new"
       id="make-one-button"
-      onClick={click}
+      onClick={onClick}
     >
       Make one
     </button>

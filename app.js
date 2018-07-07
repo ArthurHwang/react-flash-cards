@@ -58,9 +58,9 @@ export default class App extends Component {
     this.setState({ editIndex: null })
   }
 
-  handleEdit(event) {
+  handleEdit({ target }) {
     const { data } = this.state
-    const id = parseInt(event.target.parentNode.parentNode.getAttribute('data-id'))
+    const id = parseInt(target.parentNode.parentNode.getAttribute('data-id'))
     this.setState({
       editIndex: id,
     })
@@ -93,28 +93,26 @@ export default class App extends Component {
   }
 
   handleSubmit(event) {
-    const { target } = event
-    if (target.question.value === "" || target.answer.value === "") {
-      alert('Flash card values must not be empty!')
-      return
-    }
     event.preventDefault()
+    const { target } = event
     const copiedState = [...this.state.data]
     const formObject = {
       question: this.state.question,
       answer: this.state.answer,
     }
-    copiedState.push(formObject)
+    if (target.question.value === "" || target.answer.value === "") {
+      alert('Flash card values must not be empty!')
+      return
+    }
     this.setState({
-      data: copiedState,
+      data: [copiedState, ...formObject],
       question: '',
       answer: '',
     })
     target.reset()
   }
 
-  handleDestroy(event) {
-    const { target } = event
+  handleDestroy({ target }) {
     const delIndex = parseInt(target.parentNode.parentNode.getAttribute('data-id'))
     const copy = [...this.state.data]
     copy.splice(delIndex, 1)
@@ -123,87 +121,58 @@ export default class App extends Component {
 
   renderView() {
     const {
-      handleEdit, clickHandler, state, handleChange, handleSubmit, handleDestroy,
+      handleEditSubmit, handleEditCancel, handleEdit, clickHandler, state, handleChange, handleSubmit, handleDestroy,
     } = this
-    const viewRender = state.view === "#cards"
-      ? (
+    let viewRender = null
+    if (state.view === "#new") {
+      viewRender = (
+        <Form
+          view={state.view}
+          value={state.data}
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+        />
+      )
+    }
+    if (state.view ==="#cards") {
+      viewRender = (
         <FlashCards
           edit={handleEdit}
-          click={clickHandler}
+          onClick={clickHandler}
           data={state.data}
           destroy={handleDestroy}
         />
       )
-      : (
-        <Form
-          view={state.view}
-          value={state.data}
-          change={handleChange}
-          submit={handleSubmit}
+    }
+    if (this.state.view === "#cards" && this.state.editIndex !== null) {
+      viewRender = (
+        <EditForm
+          onSubmit={handleEditSubmit}
+          onChange={handleChange}
+          editQuestionValue={state.question}
+          editAnswerValue={state.answer}
+          onClick={handleEditCancel}
         />
       )
+    }
+    if (this.state.view === "#practice" && !this.state.data.length) {
+      viewRender = (
+        <Nav />
+        <Empty onClick={clickHandler} />
+      )
+    }
+    if (this.state.view === "#practice" && this.state.data.length !== 0) {
+      viewRender = (
+        <Nav />
+        <CardCarousel
+          data={state.data}
+        />
+      )
+    }
     return viewRender
   }
 
   render() {
-    if (this.state.editIndex !== null && this.state.view === "#cards") {
-      return (
-        <React.Fragment>
-          <h1 className="title text-center">
-
-          React Flash Cards
-            <i className="text-primary fab fa-react" />
-          </h1>
-          <div className="vertical-center">
-            <div className="container">
-              <Nav />
-              <EditForm
-                submit={this.handleEditSubmit}
-                change={this.handleChange}
-                editQuestionValue={this.state.question}
-                editAnswerValue={this.state.answer}
-                click={this.handleEditCancel}
-              />
-            </div>
-          </div>
-        </React.Fragment>
-      )
-    }
-    if (this.state.view === "#practice" && !this.state.data.length) {
-      return (
-        <React.Fragment>
-          <h1 className="title text-center">
-          React Flash Cards
-            <i className="text-primary fab fa-react" />
-          </h1>
-          <div className="practice-container vertical-center">
-            <div className="container">
-              <Nav />
-              <Empty click={this.clickHandler} />
-            </div>
-          </div>
-        </React.Fragment>
-      )
-    }
-    if (this.state.view === "#practice" && this.state.data.length !== 0) {
-      return (
-        <React.Fragment>
-          <h1 className="title text-center">
-          React Flash Cards
-            <i className="text-primary fab fa-react" />
-          </h1>
-          <div className="vertical-center">
-            <div className="container">
-              <Nav />
-              <CardCarousel
-                data={this.state.data}
-                click={this.clickHandler}
-              />
-            </div>
-          </div>
-        </React.Fragment>
-      )
-    }
     return (
       <React.Fragment>
         <h1 className="title text-center">
