@@ -157,13 +157,11 @@ export default class App extends Component {
     }
     if (this.state.view === "#practice" && !this.state.data.length) {
       viewRender = (
-        <Nav />
         <Empty onClick={clickHandler} />
       )
     }
     if (this.state.view === "#practice" && this.state.data.length !== 0) {
       viewRender = (
-        <Nav />
         <CardCarousel
           data={state.data}
         />
