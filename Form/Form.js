@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Form = ({ view, value, onChange, onSubmit }) => (
   <div className="card-container card">
