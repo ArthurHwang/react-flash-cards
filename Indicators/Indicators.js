@@ -1,5 +1,5 @@
 import React from 'react';
-import Pip from './Pip'
+import Pip from './Pip';
 
 const Indicators = props => (
   <ul className="carousel-indicators">
