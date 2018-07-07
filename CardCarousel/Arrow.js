@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Arrow = ({ direction, onClick }) => {
-  const directional = `fas fa-arrow-alt-circle-${direction}`
+  const directional = `text-primary fas fa-arrow-${direction}`
   return (
     <div
       className={`slide-arrow ${direction}`}

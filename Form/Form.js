@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const Form = ({ view, click, value, onChange, onSubmit }) => (
+const Form = ({ view, value, onChange, onSubmit }) => (
   <div className="card-container card">
     <div className="new-card-form card-body">
       <form className="user-form" onSubmit={onSubmit}>
@@ -14,7 +14,7 @@ const Form = ({ view, click, value, onChange, onSubmit }) => (
           <input
             type="text"
             value={value.question}
-            onChange={change}
+            onChange={onChange}
             name="question"
             className="form-control"
             placeholder="Enter Question"
@@ -33,7 +33,7 @@ const Form = ({ view, click, value, onChange, onSubmit }) => (
             placeholder="Enter Answer"
           />
         </div>
-        <button type="submit" className="btn-save-card btn btn-large btn-success">
+        <button type="submit" className="btn-save-card btn btn-success">
             Save
         </button>
       </form>
