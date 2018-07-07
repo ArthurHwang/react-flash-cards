@@ -9,7 +9,8 @@ const Empty = ({ click }) => (
       className="btn-lg btn btn-success"
       href="#new"
       id="make-one-button"
-      onClick={click}>
+      onClick={click}
+    >
       Make one
     </button>
   </div>

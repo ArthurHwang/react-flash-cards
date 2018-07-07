@@ -15,14 +15,14 @@ body {
 }
 
 .title {
-  margin-top: 10px;
+  padding-top: 10px;
 }
 
 .vertical-center {
   align-items: center;
   display: flex;
-  min-height: 100;
-  min-height: 100vh;
+  min-height: 90;
+  min-height: 90vh;
 }
 
 .flashcard {
@@ -70,11 +70,50 @@ body {
 
 .card-container {
   margin: auto;
-  margin-top: -150px;
   width: 70%;
 }
 
 .btn-save-card {
   width: 100%;
   margin-top: 20px;
+}
+
+.image-slide {
+  margin-left: 12%;
+  height: 75%;
+  width: 75%;
+}
+
+.slide-arrow {
+  color: #007bff;
+  cursor: pointer;
+  font-size: 4rem;
+  position: fixed;
+  top: 43%;
+}
+
+.slide-arrow.right {
+  right: 1%;
+}
+
+.slide-arrow.left {
+  left: 1%;
+}
+
+.practice {
+  margin-top: -150px;
+  text-align: center;
+}
+
+.answer {
+  font-weight: 700;
+}
+
+.show-answer {
+  margin-left: 0;
+  font-size: 20px;
+}
+
+.answer-text {
+  font-size: 20px;
 }

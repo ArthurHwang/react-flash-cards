@@ -3,6 +3,8 @@ import Nav from './Nav/Nav'
 import Form from './Form/Form'
 import FlashCards from './FlashCard/FlashCards'
 import EditForm from './EditForm/EditForm'
+import CardCarousel from './CardCarousel/CardCarousel'
+import Empty from './Form/Empty'
 
 export default class App extends Component {
   constructor(props) {
@@ -14,13 +16,13 @@ export default class App extends Component {
       view: window.location.hash,
       editIndex: null,
     })
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
     this.clickHandler = this.clickHandler.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
     this.handleEditSubmit = this.handleEditSubmit.bind(this)
     this.handleEditCancel = this.handleEditCancel.bind(this)
-    this.handleDestroy = this.handleDestroy.bind(this)
+    this.handleDestroy = this.handleDestroy.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +32,7 @@ export default class App extends Component {
     }
     window.addEventListener('hashchange', (event) => {
       const newHash = window.location.hash
-      this.setState({ view: newHash })
+      this.setState({ view: newHash });
     })
   }
 
@@ -43,7 +45,7 @@ export default class App extends Component {
 
   clickHandler() {
     window.location.hash = "#new"
-    this.setState({ view: '#new' })
+    this.setState({ view: '#new' });
   }
 
   handleChange({ target }) {
@@ -120,7 +122,9 @@ export default class App extends Component {
   }
 
   renderView() {
-    const { handleEdit, clickHandler, state, handleChange, handleSubmit, handleDestroy } = this
+    const {
+      handleEdit, clickHandler, state, handleChange, handleSubmit, handleDestroy,
+    } = this
     const viewRender = state.view === "#cards"
       ? (
         <FlashCards
@@ -146,8 +150,9 @@ export default class App extends Component {
       return (
         <React.Fragment>
           <h1 className="title text-center">
+
           React Flash Cards
-          <i className="text-primary fab fa-react" />
+            <i className="text-primary fab fa-react" />
           </h1>
           <div className="vertical-center">
             <div className="container">
@@ -164,11 +169,46 @@ export default class App extends Component {
         </React.Fragment>
       )
     }
+    if (this.state.view === "#practice" && !this.state.data.length) {
+      return (
+        <React.Fragment>
+          <h1 className="title text-center">
+          React Flash Cards
+            <i className="text-primary fab fa-react" />
+          </h1>
+          <div className="practice-container vertical-center">
+            <div className="container">
+              <Nav />
+              <Empty click={this.clickHandler} />
+            </div>
+          </div>
+        </React.Fragment>
+      )
+    }
+    if (this.state.view === "#practice" && this.state.data.length !== 0) {
+      return (
+        <React.Fragment>
+          <h1 className="title text-center">
+          React Flash Cards
+            <i className="text-primary fab fa-react" />
+          </h1>
+          <div className="vertical-center">
+            <div className="container">
+              <Nav />
+              <CardCarousel
+                data={this.state.data}
+                click={this.clickHandler}
+              />
+            </div>
+          </div>
+        </React.Fragment>
+      )
+    }
     return (
       <React.Fragment>
         <h1 className="title text-center">
         React Flash Cards
-        <i className="text-primary fab fa-react" />
+          <i className="text-primary fab fa-react" />
         </h1>
         <div className="vertical-center">
           <div className="container">
