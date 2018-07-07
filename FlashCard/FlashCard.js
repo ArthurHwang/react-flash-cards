@@ -1,8 +1,6 @@
 import React from 'react'
 
-const FlashCard = ({
-  question, answer, edit, id, destroy,
-}) => (
+const FlashCard = ({ question, answer, edit, id, destroy }) => (
   <div data-id={id} className="flashcard card">
     <div className="card-header bg-warning" />
     <div className="card-body">

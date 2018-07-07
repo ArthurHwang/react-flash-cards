@@ -1,8 +1,6 @@
 import React from 'react'
 
-const Form = ({
-  view, click, value, onChange, onSubmit,
-}) => (
+const Form = ({ view, click, value, onChange, onSubmit }) => (
   <div className="card-container card">
     <div className="new-card-form card-body">
       <form className="user-form" onSubmit={onSubmit}>
