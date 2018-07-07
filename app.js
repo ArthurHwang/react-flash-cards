@@ -13,7 +13,7 @@ export default class App extends Component {
       data: [],
       question: '',
       answer: '',
-      view: window.location.hash,
+      view: '#new',
       editIndex: null,
     })
     this.handleChange = this.handleChange.bind(this);
@@ -105,7 +105,7 @@ export default class App extends Component {
       return
     }
     this.setState({
-      data: [copiedState, ...formObject],
+      data: [formObject, ...copiedState],
       question: '',
       answer: '',
     })
