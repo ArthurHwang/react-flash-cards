@@ -2,11 +2,9 @@ import React from 'react'
 import FlashCard from './FlashCard'
 import Empty from '../Form/Empty'
 
-const FlashCards = ({
-  edit, click, data, destroy,
-}) => {
+const FlashCards = ({ edit, onClick, data, destroy }) => {
   const cardData = [...data];
-  let cards = <Empty click={click} />
+  let cards = <Empty onClick={onClick} />
   if (data.length) {
     cards = cardData.map((elem, index) => (
       <FlashCard
