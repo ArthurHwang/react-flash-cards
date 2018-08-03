@@ -11,7 +11,6 @@ An interactive ReactJS application to let users create, edit, delete, view and p
 - HTML5
 - Bootstrap 4
 
-
 ## Key Features
 
 ### Users can create flashcards
@@ -20,7 +19,9 @@ An interactive ReactJS application to let users create, edit, delete, view and p
 
 ### Users can choose to show answer
 
-## Users can test themselves
+### Users can test themselves
+
+## Development
 
 ### System Requirements
 - Node.js v10
