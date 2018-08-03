@@ -8,7 +8,7 @@
   "homepage": "http://arthurhwang.github.io/react-flash-cards",
   "main": "index.js",
   "scripts": {
-    "bundle": "browserify client/index.js -t babelify -o main.js",
+    "bundle": "browserify index.js -t babelify -o main.js",
     "watch": "watchify -vd -t babelify index.js -o main.js",
     "postinstall": "browserify index.js -t babelify -o main.js"
   },
