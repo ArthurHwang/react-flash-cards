@@ -10,11 +10,8 @@
   "main": "index.js",
   "scripts": {
     "bundle": "browserify client/index.js -t babelify -o main.js",
-    "watch":
-      "watchify -vd -t babelify index.js -o main.js",
-    "postinstall":
-      "browserify client/index.js -t babelify -o main.js",
-
+    "watch": "watchify -vd -t babelify index.js -o main.js",
+    "postinstall": "browserify client/index.js -t babelify -o main.js",
   },
   "keywords": [],
   "author": "",
