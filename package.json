@@ -9,8 +9,7 @@
   "main": "index.js",
   "scripts": {
     "bundle": "browserify index.js -t babelify -o main.js",
-    "watch": "watchify -vd -t babelify index.js -o main.js",
-    "postinstall": "npm run bundle"
+    "watch": "watchify -vd -t babelify index.js -o main.js"
   },
   "keywords": [],
   "author": "",
