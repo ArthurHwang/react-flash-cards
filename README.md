@@ -14,7 +14,7 @@ An interactive ReactJS application to let users create, edit, delete, and view f
 ## Key Features
 
 ### Users can create flashcards
-<img src="https://user-images.githubusercontent.com/18460401/43681249-3a9e4688-9803-11e8-9ee0-d05aead1dcda.gif" alt="Oops...cant display" width="674" height="433">
+<img src="https://user-images.githubusercontent.com/18460401/43681249-3a9e4688-9803-11e8-9ee0-d05aead1dcda.gif" alt="Oops...cant display">
 
 ### Users can view saved flashcards
 <img src="https://user-images.githubusercontent.com/18460401/43681250-3ab8fbea-9803-11e8-9c8f-1bd082974b5c.gif" alt="Oops...cant display" width="674" height="433">
