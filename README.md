@@ -39,34 +39,21 @@ An interactive ReactJS application to let users create, edit, delete, and view f
 ### System Requirements
 - Node.js v10
 - NPM v6
-- MongoDB v4
 
 ### Getting Started
 
 Clone the repository.
 ```
-git clone https://github.com/ArthurHwang/toneify.git
+git clone https://github.com/ArthurHwang/react-flash-cards.git
 ```
 
 Install dependencies.
 ```
-cd toneify/
+cd react-flash-cards/
 npm install
 ```
 
-Create a `.env` file in the project root.  Example:
-```
-MONGODB_URI=mongodb://localhost:27017/toneify
-PORT=3000
-```
-
-### Automatically run/restart server with `nodemon` and live reload page on update with `browser-sync`
+### Run build
 ```
 npm run watch
-```
-
-### Run without `nodemon` and `browser-sync`
-```
-npm run build
-npm run start
 ```
